@@ -1,101 +1,173 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { Button } from "antd";
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+export default function LandingPage() {
+	const router = useRouter();
+
+	const handleGetStartedClick = () => {
+		router.push("/register");
+	};
+
+	return (
+		<div className="bg-gray-50 min-h-screen">
+			{/* Hero Section */}
+			<div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-blue-400 to-indigo-600 text-white text-center">
+				<motion.h1
+					className="text-5xl font-bold mb-6"
+					initial={{ y: -200, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ duration: 0.7 }}
+				>
+					Welcome to the Future of Insurance
+				</motion.h1>
+				<motion.p
+					className="text-xl mb-8"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ delay: 0.5, duration: 0.7 }}
+				>
+					Get fast, secure, and transparent motor insurance
+					coverage.
+				</motion.p>
+				<motion.div
+					initial={{ scale: 0 }}
+					animate={{ scale: 1 }}
+					transition={{ duration: 0.5 }}
+				>
+					<Button
+						type="primary"
+						size="large"
+						className="bg-white text-blue-600"
+						onClick={handleGetStartedClick}
+					>
+						Get Started
+					</Button>
+				</motion.div>
+			</div>
+
+			{/* Features Section */}
+			<div className="py-16 px-6 bg-white">
+				<div className="text-center mb-12">
+					<h2 className="text-3xl font-semibold">
+						Our Features
+					</h2>
+					<p className="text-gray-600 mt-4">
+						Experience seamless services designed for your
+						convenience.
+					</p>
+				</div>
+				<div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+					{[
+						{
+							title: "Real-Time Accident Reporting",
+							description:
+								"Report accidents instantly with live status tracking.",
+						},
+						{
+							title: "Automated Renewal Notifications",
+							description:
+								"Never miss a renewal date for your insurance.",
+						},
+						{
+							title: "Transparent Claims Processing",
+							description:
+								"Track claims and get updates at every step.",
+						},
+					].map((feature, index) => (
+						<motion.div
+							key={index}
+							className="p-6 bg-gray-100 rounded-lg shadow-lg"
+							initial={{ opacity: 0, y: 50 }}
+							whileInView={{ opacity: 1, y: 0 }}
+							viewport={{ once: true }}
+							transition={{
+								duration: 0.7,
+								delay: index * 0.3,
+							}}
+						>
+							<h3 className="text-xl font-semibold mb-4">
+								{feature.title}
+							</h3>
+							<p className="text-gray-600">
+								{feature.description}
+							</p>
+						</motion.div>
+					))}
+				</div>
+			</div>
+
+			{/* Testimonials Section */}
+			<div className="py-16 px-6 bg-gray-50">
+				<div className="text-center mb-12">
+					<h2 className="text-3xl font-semibold">
+						What Our Users Say
+					</h2>
+				</div>
+				<motion.div
+					className="flex justify-center space-x-6 overflow-hidden"
+					initial={{ x: 200, opacity: 0 }}
+					whileInView={{ x: 0, opacity: 1 }}
+					transition={{ duration: 0.7 }}
+				>
+					{[
+						{
+							name: "John Doe",
+							feedback:
+								"The platform is incredibly easy to use and saved me so much time!",
+						},
+						{
+							name: "Jane Smith",
+							feedback:
+								"Insurance renewal notifications are a game-changer.",
+						},
+					].map((testimonial, index) => (
+						<div
+							key={index}
+							className="p-6 bg-white rounded-lg shadow-lg max-w-xs"
+						>
+							<p className="text-gray-600 mb-4">
+								"{testimonial.feedback}"
+							</p>
+							<h4 className="text-xl font-semibold text-blue-600">
+								{testimonial.name}
+							</h4>
+						</div>
+					))}
+				</motion.div>
+			</div>
+
+			{/* Footer Section */}
+			<div className="py-6 bg-gray-900 text-white">
+				<div className="text-center">
+					<p>
+						&copy; 2024 Insurance Platform. All rights
+						reserved.
+					</p>
+					<div className="flex justify-center space-x-4 mt-4">
+						<a
+							href="#"
+							className="hover:text-blue-400"
+						>
+							Facebook
+						</a>
+						<a
+							href="#"
+							className="hover:text-blue-400"
+						>
+							Twitter
+						</a>
+						<a
+							href="#"
+							className="hover:text-blue-400"
+						>
+							LinkedIn
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

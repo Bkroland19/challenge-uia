@@ -5,6 +5,7 @@ import { Form, Input, Button, Typography, message } from "antd";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useRouter } from "next/navigation"; // use next/navigation instead
+import Link from "next/link";
 
 const { Title } = Typography;
 
@@ -114,6 +115,8 @@ export default function RegisterPage() {
 							Register
 						</Button>
 					</Form.Item>
+					<span>Already have an account ? </span>
+					<Link href={"/login"}>Login</Link>
 				</Form>
 			</div>
 		</motion.div>

@@ -22,6 +22,7 @@ const AccidentTable = () => {
 			try {
 				const response = await fetch("/api/get-accidents");
 				const result = await response.json();
+				console.log(result, "result");
 				setData(result);
 			} catch (error) {
 				message.error("Failed to fetch accidents");
@@ -103,7 +104,10 @@ const AccidentTable = () => {
 			render: (_: any, record: any) => (
 				<Button
 					icon={<EyeOutlined />}
-					onClick={() => showDetailModal(record)}
+					onClick={() => {
+						showDetailModal(record);
+						console.log(record, "record");
+					}}
 				>
 					View
 				</Button>

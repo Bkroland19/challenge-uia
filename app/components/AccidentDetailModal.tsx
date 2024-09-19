@@ -8,7 +8,7 @@ const { Title, Text } = Typography;
 interface AccidentDetailModalProps {
 	visible: boolean;
 	onCancel: () => void;
-	accident: any; // Replace 'any' with your accident type
+	accident: any;
 }
 
 const AccidentDetailModal: React.FC<AccidentDetailModalProps> = ({
@@ -63,7 +63,7 @@ const AccidentDetailModal: React.FC<AccidentDetailModalProps> = ({
 							>
 								<Image
 									width={200}
-									src={`/uploads/${image}`} // Adjust the path based on your setup
+									src={`${image}`} // Adjust the path based on your setup
 									preview={false}
 									style={{ marginBottom: 8 }}
 								/>

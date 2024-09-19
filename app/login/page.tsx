@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import "antd/dist/reset.css";
 import "tailwindcss/tailwind.css";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const { Title } = Typography;
 
@@ -96,6 +97,8 @@ export default function LoginPage() {
 							Login
 						</Button>
 					</Form.Item>
+					<span>Already have an account ? </span>
+					<Link href={"/register"}>Register</Link>
 				</Form>
 			</div>
 		</motion.div>

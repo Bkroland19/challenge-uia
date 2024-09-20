@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Form, Input, Button, Typography, message } from "antd";
+import { Form, Input, Button, Typography, message, Select } from "antd"; // Import Select
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useRouter } from "next/navigation"; // use next/navigation instead
 import Link from "next/link";
 
 const { Title } = Typography;
+const { Option } = Select; // Destructure Option from Select
 
 export default function RegisterPage() {
 	const router = useRouter();
@@ -18,6 +19,7 @@ export default function RegisterPage() {
 		name: string;
 		phoneNumber: string;
 		password: string;
+		role: string; // Include role
 	}) => {
 		setLoading(true);
 		try {
@@ -105,6 +107,24 @@ export default function RegisterPage() {
 					>
 						<Input.Password />
 					</Form.Item>
+
+					{/* Role Dropdown */}
+					<Form.Item
+						name="role"
+						label="Role"
+						rules={[
+							{
+								required: true,
+								message: "Please select a role!",
+							},
+						]}
+					>
+						<Select placeholder="Select a role">
+							<Option value="USER">User</Option>
+							<Option value="ADMIN">Admin</Option>
+						</Select>
+					</Form.Item>
+
 					<Form.Item>
 						<Button
 							type="primary"

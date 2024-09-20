@@ -26,12 +26,15 @@ export default function LoginPage() {
 			});
 
 			const data = await res.json();
-			console.log(data.user?.id, "==");
 
 			if (res.ok) {
 				message.success("Login successful!");
 				localStorage.setItem("userId", data.user?.id);
-				router.push("/accidents");
+				{
+					data.user?.role === "USER"
+						? router.push("/accidents")
+						: router.push("/dashboard");
+				}
 			} else {
 				message.error(
 					data.error || "Login failed. Please try again."

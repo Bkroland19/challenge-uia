@@ -24,10 +24,10 @@ export default function AccidentsPage() {
 									Home
 								</a>
 							</li>
-						
+
 							<li>
 								<a
-									href="/logout"
+									href="/login"
 									className="text-gray-600 hover:text-red-600"
 								>
 									Logout
@@ -48,10 +48,10 @@ export default function AccidentsPage() {
 						<ul>
 							<li className="mb-4">
 								<a
-									href="/dashboard"
-									className="block py-2 px-4 rounded hover:bg-indigo-700"
+									href="/accidents"
+									className="block py-2 px-4 rounded bg-indigo-700"
 								>
-									Dashboard Overview
+									Accident Reports
 								</a>
 							</li>
 							<li className="mb-4">
@@ -59,23 +59,7 @@ export default function AccidentsPage() {
 									href="/report-incident"
 									className="block py-2 px-4 rounded hover:bg-indigo-700"
 								>
-									Report Incident
-								</a>
-							</li>
-							<li className="mb-4">
-								<a
-									href="/accidents"
-									className="block py-2 px-4 rounded bg-indigo-700"
-								>
-									Accident Reports
-								</a>
-							</li>
-							<li>
-								<a
-									href="/history"
-									className="block py-2 px-4 rounded hover:bg-indigo-700"
-								>
-									Incident History
+									Claims
 								</a>
 							</li>
 						</ul>

@@ -7,16 +7,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+
 model User {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   email       String   @unique
   name        String
   phoneNumber String
   password    String
+  role        Role     @default(USER)
   policies    Policy[]
   accidents   Accident[]
 }
 
+
+enum Role {
+  ADMIN
+  USER
+}
 model Policy {
   id        String  @id @default(auto()) @map("_id") @db.ObjectId
   userId    String  @db.ObjectId
@@ -31,7 +39,7 @@ model Accident {
   user      User     @relation(fields: [userId], references: [id])
   details   String
   location  String
-  images    String[] // Array of image URLs or paths
+  images    String[] 
   createdAt DateTime @default(now())
 }
 

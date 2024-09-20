@@ -40,6 +40,7 @@ model Accident {
   details   String
   location  String
   images    String[] 
+  VehicleNo String
   createdAt DateTime @default(now())
 }
 

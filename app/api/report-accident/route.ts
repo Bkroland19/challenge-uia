@@ -5,7 +5,7 @@ import cloudinary, { uploadImage } from '@/app/utils/cloudinary';
 
 export async function POST(request: Request) {
     try {
-        const { userId, details, location, images } = await request.json();
+        const { userId, details, location, images, veichleNo } = await request.json();
 
         if (!ObjectId.isValid(userId)) {
             return NextResponse.json({ error: 'Invalid userId format' }, { status: 400 });
@@ -17,26 +17,26 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: 'User not found' }, { status: 404 });
         }
 
-        // Upload images to Cloudinary and collect their URLs
+
         const imageUrls = await Promise.all(
             images.map(async (image: string) => {
-                const result = await uploadImage(image);
+                const result: any = await uploadImage(image);
                 return result.secure_url;
             })
         );
 
-        // Create the accident report and store the Cloudinary URLs in the database
         const accident = await prisma.accident.create({
             data: {
                 userId,
                 details,
                 location,
-                images: imageUrls, // Store Cloudinary URLs here
+                veichleNo,
+                images: imageUrls,
             },
         });
 
         return NextResponse.json(accident, { status: 201 });
-    } catch (error) {
+    } catch (error: any) {
         console.error('Error in report-accident API route:', error);
         return NextResponse.json({ error: 'Internal Server Error', details: error.message }, { status: 500 });
     }

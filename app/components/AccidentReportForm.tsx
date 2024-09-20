@@ -117,6 +117,18 @@ const AccidentReportForm = () => {
 			>
 				<Input />
 			</Form.Item>
+			<Form.Item
+				name="vehicleNo"
+				label="Vehicle Number"
+				rules={[
+					{
+						required: true,
+						message: "Please enter the vehicle number.",
+					},
+				]}
+			>
+				<Input placeholder="Enter the vehicle number" />
+			</Form.Item>
 			<Form.Item label="Upload Photos">
 				<Upload
 					listType="picture"

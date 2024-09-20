@@ -6,18 +6,19 @@ import {
 	BarChartOutlined,
 	FileTextOutlined,
 	NotificationOutlined,
+	AlertOutlined,
+	CarOutlined,
 } from "@ant-design/icons";
 import { Bar, Pie, Line } from "@ant-design/charts";
 import { motion } from "framer-motion";
-import AccidentTable from "../components/AccidentTable";
+import FraudDetectionForm from "../components/FraudDetectionForm";
+import AddVehicleForm from "../components/AddVehicleForm"; // Import the AddVehicleForm
 
 const { Header, Content, Sider } = Layout;
 
 const DashboardPage = () => {
-	// State to track selected menu item
 	const [selectedMenu, setSelectedMenu] = useState("1");
 
-	// Dummy data for accident reports
 	const accidentReports = [
 		{
 			key: "1",
@@ -35,7 +36,6 @@ const DashboardPage = () => {
 		},
 	];
 
-	// Dummy data for renewals
 	const renewals = [
 		{
 			key: "1",
@@ -53,7 +53,6 @@ const DashboardPage = () => {
 		},
 	];
 
-	// Dummy data for claims trends
 	const claimsTrendData = [
 		{ date: "2024-01", value: 5 },
 		{ date: "2024-02", value: 10 },
@@ -62,7 +61,6 @@ const DashboardPage = () => {
 		{ date: "2024-05", value: 30 },
 	];
 
-	// Accident Reports Bar Chart Config
 	const accidentBarConfig = {
 		data: [
 			{ date: "2024-08-16", count: 10 },
@@ -82,7 +80,6 @@ const DashboardPage = () => {
 		},
 	};
 
-	// Renewals Pie Chart Config
 	const renewalPieConfig = {
 		appendPadding: 10,
 		data: [
@@ -104,7 +101,6 @@ const DashboardPage = () => {
 		interactions: [{ type: "element-active" }],
 	};
 
-	// Claims Trends Line Chart Config
 	const claimsLineConfig = {
 		data: claimsTrendData,
 		xField: "date",
@@ -144,7 +140,6 @@ const DashboardPage = () => {
 		{ title: "Status", dataIndex: "status", key: "status" },
 	];
 
-	// Function to render content based on selected menu item
 	const renderContent = () => {
 		if (selectedMenu === "1") {
 			return (
@@ -154,7 +149,6 @@ const DashboardPage = () => {
 					transition={{ duration: 0.7 }}
 					className="mb-8"
 				>
-					{/* Accident Reports Section */}
 					<Card
 						title="Recent Accident Reports"
 						bordered={false}
@@ -173,9 +167,6 @@ const DashboardPage = () => {
 					>
 						<Bar {...accidentBarConfig} />
 					</Card>
-					<Card className="shadow-lg mb-6">
-						<AccidentTable />
-					</Card>
 				</motion.div>
 			);
 		}
@@ -188,7 +179,6 @@ const DashboardPage = () => {
 					transition={{ duration: 0.7 }}
 					className="mb-8"
 				>
-					{/* Renewals Section */}
 					<Card
 						title="Upcoming Renewals"
 						bordered={false}
@@ -219,7 +209,6 @@ const DashboardPage = () => {
 					transition={{ duration: 0.7 }}
 					className="mb-8"
 				>
-					{/* Claims & Insights Section */}
 					<Card
 						title="Data Insights"
 						bordered={false}
@@ -246,6 +235,44 @@ const DashboardPage = () => {
 						className="shadow-lg"
 					>
 						<Line {...claimsLineConfig} />
+					</Card>
+				</motion.div>
+			);
+		}
+
+		if (selectedMenu === "4") {
+			return (
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7 }}
+					className="mb-8"
+				>
+					<Card
+						title="Fraud Detection"
+						bordered={false}
+						className="shadow-lg"
+					>
+						<FraudDetectionForm />
+					</Card>
+				</motion.div>
+			);
+		}
+
+		if (selectedMenu === "5") {
+			return (
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7 }}
+					className="mb-8"
+				>
+					<Card
+						title="Add Vehicle"
+						bordered={false}
+						className="shadow-lg"
+					>
+						<AddVehicleForm />
 					</Card>
 				</motion.div>
 			);
@@ -284,6 +311,16 @@ const DashboardPage = () => {
 							icon: <BarChartOutlined />,
 							label: "Claims & Insights",
 						},
+						{
+							key: "4",
+							icon: <AlertOutlined />,
+							label: "Fraud Detection",
+						},
+						{
+							key: "5",
+							icon: <CarOutlined />,
+							label: "Add Vehicle",
+						}, // New Add Vehicle menu
 					]}
 				/>
 			</Sider>

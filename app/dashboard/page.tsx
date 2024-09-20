@@ -13,6 +13,7 @@ import { Bar, Pie, Line } from "@ant-design/charts";
 import { motion } from "framer-motion";
 import FraudDetectionForm from "../components/FraudDetectionForm";
 import AddVehicleForm from "../components/AddVehicleForm"; // Import the AddVehicleForm
+import AddPolicyForm from "../components/AddPolicyForm"; // Import the AddPolicyForm
 
 const { Header, Content, Sider } = Layout;
 
@@ -278,6 +279,25 @@ const DashboardPage = () => {
 			);
 		}
 
+		if (selectedMenu === "6") {
+			return (
+				<motion.div
+					initial={{ opacity: 0, y: 50 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7 }}
+					className="mb-8"
+				>
+					<Card
+						title="Add Policy"
+						bordered={false}
+						className="shadow-lg"
+					>
+						<AddPolicyForm />
+					</Card>
+				</motion.div>
+			);
+		}
+
 		return null;
 	};
 
@@ -320,7 +340,12 @@ const DashboardPage = () => {
 							key: "5",
 							icon: <CarOutlined />,
 							label: "Add Vehicle",
-						}, // New Add Vehicle menu
+						},
+						{
+							key: "6",
+							icon: <CarOutlined />,
+							label: "Add Policy",
+						},
 					]}
 				/>
 			</Sider>

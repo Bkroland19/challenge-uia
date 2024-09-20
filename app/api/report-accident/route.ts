@@ -5,7 +5,7 @@ import cloudinary, { uploadImage } from '@/app/utils/cloudinary';
 
 export async function POST(request: Request) {
     try {
-        const { userId, details, location, images, VehicleNo } = await request.json();
+        const { userId, details, location, images, vehicleNo } = await request.json();
 
         if (!ObjectId.isValid(userId)) {
             return NextResponse.json({ error: 'Invalid userId format' }, { status: 400 });
@@ -30,7 +30,7 @@ export async function POST(request: Request) {
                 userId,
                 details,
                 location,
-                VehicleNo,
+                vehicleNo,
                 images: imageUrls,
             },
         });

@@ -1,0 +1,9 @@
+.ant-menu-dark .ant-menu-item-selected {
+	background-color: #004080 !important; 
+	color: #fff !important; 
+}
+
+.ant-menu-dark .ant-menu-item:hover {
+	background-color: #003366 !important; 
+	color: #fff !important; 
+}

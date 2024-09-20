@@ -12,8 +12,10 @@ import {
 import { Bar, Pie, Line } from "@ant-design/charts";
 import { motion } from "framer-motion";
 import FraudDetectionForm from "../components/FraudDetectionForm";
-import AddVehicleForm from "../components/AddVehicleForm"; // Import the AddVehicleForm
-import AddPolicyForm from "../components/AddPolicyForm"; // Import the AddPolicyForm
+import AddVehicleForm from "../components/AddVehicleForm";
+import AddPolicyForm from "../components/AddPolicyForm";
+
+import "./style.css";
 
 const { Header, Content, Sider } = Layout;
 
@@ -305,9 +307,9 @@ const DashboardPage = () => {
 		<Layout className="min-h-screen">
 			<Sider
 				width={250}
-				className="bg-white shadow-lg"
+				className="bg-black shadow-lg"
 			>
-				<div className="p-4 text-center text-xl font-bold">
+				<div className="p-4 text-center text-xl text-white font-bold">
 					Dashboard
 				</div>
 				<Menu
@@ -347,6 +349,13 @@ const DashboardPage = () => {
 							label: "Add Policy",
 						},
 					]}
+					style={{
+						backgroundColor: "#001529", // Dark blue background
+						color: "#fff", // White text color
+						borderRight: "none", // Remove border on right
+					}}
+					// Add custom theme to ensure white hover/select states
+					theme="dark" // Use dark theme to maintain consistency
 				/>
 			</Sider>
 
